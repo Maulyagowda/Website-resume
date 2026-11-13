@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Personal Website</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background:pink;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: linear-gradient(120deg, #141e30, #243b55);
+    color: white;
+    text-align: center;
+    padding: 35px;
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+/* Navigation */
+nav {
+    background: #172a45;
+    text-align: center;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav a:hover,
+nav a.active {
+    background: #3498db;
+    border-radius: 5px;
+}
+
+/* Home page */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    min-height: 400px;
+}
+.profile-photo {
+    width: 220px;
+    height: 300px;
+    border-radius:10px;
+    object-fit: contain;
+    border: 5px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    margin: 20px auto;
+    display: block;
+}
+.hero h2 {
+    font-size: 35px;
+    color: #243b55;
+}
+
+.hero h3 {
+    font-size: 28px;
+    color: #3498db;
+    margin: 10px;
+}
+
+.hero p {
+    margin: 15px auto;
+    max-width: 650px;
+}
+
+/* Content */
+.container {
+    width: 85%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    color: #243b55;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #243b55;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #243b55;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f2f5fa;
+}
+
+ul {
+    padding-left: 25px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #1d6fa5;
+}
+
+/* Resume styling */
+.resume-header {
+    text-align: center;
+    padding: 15px;
+}
+
+.resume-header h1 {
+    color: #243b55;
+    font-size: 30px;
+}
+
+.resume-header p {
+    margin: 5px;
+}
+
+.resume-section {
+    border-bottom: 2px solid #243b55;
+    padding: 15px 0;
+}
+
+.resume-section h2 {
+    color: #243b55;
+    font-size: 19px;
+    border: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.resume-section h3 {
+    font-size: 16px;
+}
+
+.resume-contact {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.resume-skills {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 8px;
+}
+
+.resume-skills strong {
+    color: #243b55;
+}
+
+/* Bio-data */
+.details p {
+    padding: 6px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Footer */
+footer {
+    background: #172a45;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    margin-top: 30px;
+}
+
+/* Hide pages */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Responsive design */
+@media(max-width: 600px) {
+
+    .container {
+        width: 95%;
+    }
+
+    nav a {
+        display: inline-block;
+        padding: 8px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .resume-skills {
+        grid-template-columns: 100px 1fr;
+        font-size: 13px;
+    }
+}
+
+/* Print */
+@media print {
+
+    nav, footer, .btn {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+    }
+
+    .page {
+        display: none !important;
+    }
+
+    .page.active {
+        display: block !important;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .resume-section {
+        break-inside: avoid;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+    <h1>My Personal Website</h1>
+    <p>Welcome to My Portfolio</p>
+</header>
+
+<!-- Navigation Bar -->
+<nav>
+    <a onclick="showPage('home', this)" class="active">Home</a>
+    <a onclick="showPage('resume', this)">Resume</a>
+    <a onclick="showPage('biodata', this)">Bio-Data</a>
+</nav>
+
+<!-- HOME PAGE -->
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <h2>Hello, Welcome!</h2>
+            <img src="profile.jpg.jpeg" alt="My Profile Photo" class="profile-photo">
+
+
+        <h3>I am Maulya</h3>
+
+        <p>Computer Science Engineering Student | Web Developer | Learner</p>
+
+        <p>
+        Welcome to my personal website.
+        Here you can learn about my education,
+        skills, projects and personal details.
+        </p>
+
+        <button class="btn" onclick="showPage('resume')">
+            View Resume
+        </button>
+
+        <button class="btn" onclick="showPage('biodata')">
+            View Bio-Data
+        </button>
+
+    </div>
+
+</section>
+
+<!-- RESUME PAGE -->
+<section id="resume" class="page">
+
+<main class="container">
+
+<div class="card">
+
+    <!-- Resume Heading -->
+    <div class="resume-header">
+
+        <h1>RESUME</h1>
+
+        <h2>MAULYA</h2>
+
+        <p>Computer Science Engineering Student</p>
+
+        <p class="resume-contact">
+            Puttur, DK |
+            7618731972 |
+            maulyagowda746@gmail.com
+        </p>
+
+        <p class="resume-contact">
+            LinkedIn: linkedin.com/in/maulya
+        </p>
+
+    </div>
+
+    <!-- Professional Summary -->
+    <div class="resume-section">
+
+        <h2>Professional Summary</h2>
+
+        <p>
+        Motivated Computer Science Engineering student with
+        strong foundations in programming, web development,
+        databases, and software engineering. Experienced in
+        developing academic and web-based projects using
+        HTML, CSS, JavaScript, Python, and SQL. Passionate
+        about backend development and emerging technologies.
+        </p>
+
+    </div>
+
+    <!-- Education -->
+    <div class="resume-section">
+
+        <h2>Education</h2>
+
+        <h3>Vivekananda College of Engineering and Technology, Puttur</h3>
+
+        <p>Bachelor of Engineering in Computer Science</p>
+
+        <p>2024 - Present</p>
+
+        <h3>Vani Pre-University College</h3>
+
+        <p>Pre-University Course (PUC)</p>
+
+        <p>2022 - 2024</p>
+
+    </div>
+
+    <!-- Projects -->
+    <div class="resume-section">
+
+        <h2>Projects</h2>
+
+        <h3>Artificial Intelligence Chatbot</h3>
+
+        <ul>
+            <li>
+            Designed a conceptual recycling framework using
+            AI and robotics.
+            </li>
+
+            <li>
+            Explored automated waste sorting and smartphone
+            disassembly systems.
+            </li>
+
+            <li>
+            Integrated smart recycling ideas with computer
+            vision concepts.
+            </li>
+        </ul>
+
+        <h3>Student Attendance Management System (Web-Based)</h3>
+
+        <ul>
+            <li>
+            Developed a digital attendance management system
+            using HTML, CSS, and JavaScript.
+            </li>
+
+            <li>
+            Implemented tracking, percentage calculation,
+            and report generation.
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- Certifications -->
+    <div class="resume-section">
+
+        <h2>Certifications</h2>
+
+        <ul>
+            <li>
+            Creating Responsive Web Pages using Bootstrap 4
+            - Infosys Springboard
+            </li>
+
+            <li>
+            Data Structures and Algorithms
+            - Infosys Springboard
+            </li>
+
+            <li>
+            Linux for Beginners
+            - Infosys Springboard
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="resume-section">
+
+        <h2>Technical Skills</h2>
+
+        <div class="resume-skills">
+
+            <strong>Languages</strong>
+            <span>C, C++, Python, Java (Basic)</span>
+
+            <strong>Web Development</strong>
+            <span>HTML, CSS, JavaScript, Bootstrap 4</span>
+
+            <strong>Database</strong>
+            <span>SQL</span>
+
+            <strong>Tools</strong>
+            <span>VS Code, Git, Microsoft Excel</span>
+
+        </div>
+
+    </div>
+
+    <!-- Achievements -->
+    <div class="resume-section">
+
+        <h2>Achievements</h2>
+
+        <ul>
+            <li>
+            Completed multiple industry-recognized
+            certifications through Infosys Springboard.
+            </li>
+
+            <li>
+            Built academic and web development projects
+            using modern technologies.
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- Interests and Languages -->
+    <div class="resume-section">
+
+        <h2>Interests & Languages</h2>
+
+        <p>
+        <b>Interests:</b>
+        Painting, Drawing, Music, New Tech
+        </p>
+
+        <p>
+        <b>Languages:</b>
+        English, Kannada, Hindi, Tamil
+        </p>
+
+    </div>
+
+    <!-- Print Button -->
+    <center>
+
+        <button class="btn" onclick="window.print()">
+            Download / Print Resume
+        </button>
+
+    </center>
+
+</div>
+
+</main>
+
+</section>
+
+<!-- BIO-DATA PAGE -->
+<section id="biodata" class="page">
+
+    <main class="container">
+
+        <div class="card">
+
+            <h2>Personal Details</h2>
+
+            <div class="details">
+
+                <p><b>Name:</b> Maulya</p>
+
+                <p><b>Date of Birth:</b> 14/03/2006</p>
+
+                <p><b>Gender:</b>Female</p>
+
+                <p><b>Nationality:</b> Indian</p>
+
+                <p><b>Religion:</b>Hindu</p>
+
+                <p><b>Languages Known:</b> English, Hindi, Kannada, Tamil</p>
+
+                <p><b>Marital Status:</b> Unmarried</p>
+
+                <p><b>Hobbies:</b> Painting, Drawing, Music, New Tech</p>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Contact Details</h2>
+
+            <p><b>Address:</b> Puttur, DK</p>
+
+            <p><b>Phone:</b> 7618731972</p>
+
+            <p><b>Email:</b> maulyagowda746@gmail.com</p>
+
+        </div>
+
+
+        <center>
+
+            <button class="btn" onclick="window.print()">
+                Print Bio-Data
+            </button>
+
+        </center>
+
+    </main>
+
+</section>
+
+<!-- Footer -->
+<footer>
+
+    <p>© 2026 My Personal Website | All Rights Reserved</p>
+
+</footer>
+
+<!-- jQuery Library -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- JavaScript and jQuery -->
+<script>
+
+// Function to switch between pages
+
+function showPage(pageId, element) {
+
+    $(".page").removeClass("active");
+
+    $("#" + pageId).addClass("active");
+
+    $("nav a").removeClass("active");
+
+    if (element) {
+
+        $(element).addClass("active");
+
+    } else {
+
+        $("nav a").each(function() {
+
+            if ($(this).text().trim() ===
+                (pageId === "biodata" ? "Bio-Data" :
+                pageId.charAt(0).toUpperCase() +
+                pageId.slice(1))) {
+
+                $(this).addClass("active");
+
+            }
+
+        });
+
+    }
+
+    window.scrollTo(0, 0);
+
+    // Animate cards when switching pages
+
+    $(".page.active .card").hide().fadeIn(800);
+
+}
+
+// jQuery document ready
+
+$(document).ready(function() {
+
+    // Header animation
+
+    $("header").hide().fadeIn(1000);
+
+    // Card animation
+
+    $(".card").hide();
+
+    $(".page.active .card").fadeIn(800);
+
+    // Button hover effect
+
+    $(".btn").hover(
+
+        function() {
+            $(this).css("transform", "scale(1.05)");
+        },
+
+        function() {
+            $(this).css("transform", "scale(1)");
+        }
+
+    );
+
+});
+
+</script>
+
+</body>
+</html>
